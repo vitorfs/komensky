@@ -35,3 +35,13 @@ body {
   border-radius: 10px;
   width: 100%;
 }
+
+ul.profile-stats {
+  padding: 0;
+  color: #aaaaaa;
+  margin-top: 1em;
+}
+
+ul.profile-stats li {
+  list-style: none;
+}

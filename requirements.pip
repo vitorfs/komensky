@@ -1,0 +1,11 @@
+Django==1.6
+Markdown==2.4.1
+Pillow==2.3.1
+South==0.8.4
+Unipath==1.0
+dj-database-url==0.2.2
+dj-static==0.0.5
+psycopg2==2.5.2
+python-decouple==2.2
+static==1.0.2
+wsgiref==0.1.2

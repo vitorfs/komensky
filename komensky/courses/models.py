@@ -7,54 +7,27 @@ class Course(models.Model):
     DISPONIVEL = 'D'
     RASCUNHO = 'R'
     CANCELADO = 'C'
+    REJEITADO = 'E'
+    PENDENTE = 'P'
     STATUS = (
         (DISPONIVEL, u'Disponível'),
         (RASCUNHO, u'Rascunho'),
         (CANCELADO, u'Cancelado'),
+        (REJEITADO, u'Rejeitado'),
+        (PENDENTE, u'Pendente de Aprovação'),
         )
 
-    
-    ARTES_DESIGN = 'AD'
-    CIENCIAS_BIOLOGICAS = 'CB'
-    CIENCIAS_EXATAS = 'CE'
-    CIENCIAS_HUMANAS = 'CH'
-    ADMINISTRACAO_CIENCIAS_CONTABEIS = 'AC'
-    COMUNICACAO_SOCIAL = 'CS'
-    DIREITO = 'DI'
-    ECONOMIA = 'EC'
-    EDUCACAO = 'ED'
-    EDUCACAO_FISICA = 'EF'
-    ENFERMAGEM = 'EN'
-    ENGENHARIA = 'EG'
-    FARMACIA = 'FA'
-    FISIOTERAPIA = 'FI'
-    LETRAS = 'LE'
-    MEDICINA = 'ME'
-    ODONTOLOGIA = 'OD'
-    SERVICO_SOCIAL = 'SS'
+    TECNOLOGIA_INFORMACAO = 'TI'
+    LINGUAS = 'LI'
+    MATEMATICA = 'MA'
     SUBJECT = (
-        (ARTES_DESIGN, u'Artes e Design'),
-        (CIENCIAS_BIOLOGICAS, u'Ciências Biológicas'),
-        (CIENCIAS_EXATAS, u'Ciências Exatas'),
-        (CIENCIAS_HUMANAS, u'Ciências Humanas'),
-        (ADMINISTRACAO_CIENCIAS_CONTABEIS, u'Administração e Ciências Contábeis'),
-        (COMUNICACAO_SOCIAL, u'Comunicação Social'),
-        (DIREITO, u'Direito'),
-        (ECONOMIA, u'Economia'),
-        (EDUCACAO, u'Educação'),
-        (EDUCACAO_FISICA, u'Educação Física'),
-        (ENFERMAGEM, u'Enfermagem'),
-        (ENGENHARIA, u'Engenharia'),
-        (FARMACIA, u'Farmácia'),
-        (FISIOTERAPIA, u'Fisioterapia'),
-        (LETRAS, u'Letras'),
-        (MEDICINA, u'Medicina'),
-        (ODONTOLOGIA, u'Odontologia'),
-        (SERVICO_SOCIAL, u'Serviço Social'),
+        (TECNOLOGIA_INFORMACAO, u'Tecnologia da Informação'),
+        (LINGUAS, u'Línguas'),
+        (MATEMATICA, u'Matemática')
         )
 
     title = models.CharField('Título', max_length=255)
-    description = models.TextField('Descrição', max_length=100)
+    description = models.TextField('Descrição', max_length=1000)
     subject = models.CharField(max_length=2, choices=SUBJECT)
     user = models.ForeignKey(User)
     create_date = models.DateTimeField('Data de Criação', auto_now_add=True)
@@ -71,10 +44,10 @@ class Course(models.Model):
 
 class Module(models.Model):
     VIDEO = 'V'
-    TEXTUAL = 'T'
+    TEXTO = 'T'
     MODULE_TYPE = (
         (VIDEO, u'Vídeo'),
-        (TEXTUAL, u'Textual')
+        (TEXTO, u'Texto')
         )
     course = models.ForeignKey(Course)
     parent = models.ForeignKey('self')

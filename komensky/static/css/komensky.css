@@ -37,9 +37,9 @@ body {
 }
 
 ul.profile-stats {
-  padding: 0;
+  padding: 1em 0;
   color: #aaaaaa;
-  margin-top: 1em;
+  border-bottom: 1px solid #eeeeee;
 }
 
 ul.profile-stats li {

@@ -19,20 +19,20 @@
     {% endblock head %}
   </head>
   <body>
-    {% block body %}
-      <header>
-        <nav class="navbar navbar-default" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="{% url 'home' %}">Komensky</a>
-            </div>
-            <div class="collapse navbar-collapse" id="menu">
+    <header>
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'home' %}">Komensky</a>
+          </div>
+          <div class="collapse navbar-collapse" id="menu">
+            {% if user.is_authenticated %}
               <ul class="nav navbar-nav">
                 <li><a href="{% url 'courses' %}"><i class="fa fa-graduation-cap"></i> Meus Cursos</a></li>
                 <li><a href="#"><i class="fa fa-certificate"></i> Meus Certificados</a></li>
@@ -42,18 +42,27 @@
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><i class="fa fa-user"></i> Vitor Freitas</a></li>
                 <li style="font-size: .8em"><a href="#"><i class="fa fa-cog"></i> Configurações</a></li>
-                <li style="font-size: .8em"><a href="#"><i class="fa fa-sign-out"></i> Sair</a></li>
+                <li style="font-size: .8em"><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Sair</a></li>
               </ul>
-            </div>
+            {% else %}
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <button type="button" class="btn btn-success navbar-btn" style="margin-right: .5em">Registrar</button>
+                </li>
+                <li>
+                  <button type="button" class="btn btn-default navbar-btn" onclick="location.href='login'">Entrar</button>
+                </li>
+              </ul>
+            {% endif %}
           </div>
-        </nav>
-      </header>
-      <main>
-        <div class="container">
-          {% block main %}
-          {% endblock main %}
         </div>
-      </main>
-    {% endblock body %}
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        {% block main %}
+        {% endblock main %}
+      </div>
+    </main>
   </body>
 </html>

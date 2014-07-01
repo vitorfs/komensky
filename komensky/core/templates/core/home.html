@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 
+{% load gravatar %}
+
 {% block main %}
   <div class="page-header">
     <h1>Vitor Freitas</h1>
   </div>
   <div class="row">
     <div class="col-md-2">
-      <img src="http://vitorfs.com/img/picture.jpg" class="profile-picture">
+      <img src="{% gravatar_url 'vitorfs@gmail.com' %}" class="profile-picture">
       <ul class="profile-stats">
         <li><span style="width: 20px; display: inline-block;"><i class="fa fa-clock-o"></i></span> 18 Jun 2014</li>
         <li><span style="width: 20px; display: inline-block;"><i class="fa fa-star"></i></span> 90 Pontos</li>

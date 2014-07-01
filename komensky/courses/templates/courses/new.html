@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+  {% include 'includes/menu_professor.html' %}
+{% endblock menu %}
+
+{% block main %}
+  <div class="page-header">
+    <h1>Novo Curso</h1>
+  </div>
+  {% include 'includes/form_horizontal.html' with form=form url='new_course' %}
+{% endblock main %}

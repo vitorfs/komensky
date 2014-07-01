@@ -15,7 +15,17 @@ nav.navbar ul.nav li a {
 
 nav.navbar ul.nav li a:hover,
 nav.navbar ul.nav li a:focus {
-  color: #92c35e;
+  color: #ffffff;
+}
+
+nav.navbar ul.nav li.dropdown.open > a,
+nav.navbar ul.nav li.dropdown.open > a:focus {
+  background-color: #0078A2;
+  color: #ffffff;
+}
+
+nav.navbar ul.nav li ul.dropdown-menu li a {
+  color: #333333;
 }
 
 .navbar i.fa {

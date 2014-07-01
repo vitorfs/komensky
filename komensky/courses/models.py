@@ -20,10 +20,12 @@ class Course(models.Model):
     TECNOLOGIA_INFORMACAO = 'TI'
     LINGUAS = 'LI'
     MATEMATICA = 'MA'
+    OUTRO = 'OU'
     SUBJECT = (
-        (TECNOLOGIA_INFORMACAO, u'Tecnologia da Informação'),
         (LINGUAS, u'Línguas'),
-        (MATEMATICA, u'Matemática')
+        (MATEMATICA, u'Matemática'),
+        (TECNOLOGIA_INFORMACAO, u'Tecnologia da Informação'),
+        (OUTRO, u'Outro'),
         )
 
     title = models.CharField('Título', max_length=255)

@@ -33,16 +33,29 @@ class Course(models.Model):
     subject = models.CharField(max_length=2, choices=SUBJECT)
     user = models.ForeignKey(User)
     create_date = models.DateTimeField('Data de Criação', auto_now_add=True)
-    update_date = models.DateTimeField('Data de Atualização', blank=True)
-    status = models.CharField(max_length=1, choices=STATUS)
+    update_date = models.DateTimeField('Data de Atualização', auto_now_add=True)
+    status = models.CharField(max_length=1, choices=STATUS, default=RASCUNHO)
     score = models.IntegerField('Pontuação', default=0)
-    
-    def __unicode__(self):
-        return self.title
 
     class Meta:
         verbose_name = 'Curso'
         verbose_name_plural = 'Cursos'
+
+    def __unicode__(self):
+        return self.title
+
+    def get_status_as_label(self):
+        label = 'default'
+        if self.status == Course.DISPONIVEL:
+            label = 'success'
+        elif self.status == Course.REJEITADO or self.status == Course.CANCELADO:
+            label = 'danger'
+        elif self.status == Course.PENDENTE:
+            label = 'warning'
+        return u'<span class="label label-{0}">{1}</span>'.format(label, self.get_status_display())
+
+    def get_modules(self):
+        return Module.objects.filter(course=self)
 
 class Module(models.Model):
     VIDEO = 'V'
@@ -51,7 +64,24 @@ class Module(models.Model):
         (VIDEO, u'Vídeo'),
         (TEXTO, u'Texto')
         )
+
     course = models.ForeignKey(Course)
-    parent = models.ForeignKey('self')
+    parent = models.ForeignKey('self', null=True, blank=True)
     title = models.CharField(max_length=255)
     module_type = models.CharField(max_length=1, choices=MODULE_TYPE)
+    content = models.TextField(max_length=4000, null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Módulo'
+        verbose_name_plural = 'Módulos'
+
+    def __unicode__(self):
+        return self.title
+
+    def get_module_type_as_icon(self):
+        if self.module_type == Module.VIDEO:
+            return u'<i class="fa fa-video-camera"></i>'
+        elif self.module_type == Module.TEXTO:
+            return u'<i class="fa fa-file-text-o"></i>'
+        else:
+            return u''

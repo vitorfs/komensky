@@ -55,3 +55,15 @@ ul.profile-stats {
 ul.profile-stats li {
   list-style: none;
 }
+
+.tar {
+  text-align: right;
+}
+
+.tal {
+  text-align: left;
+}
+
+.tac {
+  text-align: center;
+}

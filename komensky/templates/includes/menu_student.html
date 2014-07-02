@@ -1,4 +1,18 @@
-<li><a href="{% url 'courses' %}"><i class="fa fa-graduation-cap"></i> Meus Cursos</a></li>
-<li><a href="#"><i class="fa fa-certificate"></i> Meus Certificados</a></li>
-<li><a href="#"><i class="fa fa-support"></i> Suporte</a></li>
-<li><a href="#"><i class="fa fa-shopping-cart"></i> Comprar Cursos</a></li>
+<ul class="nav navbar-nav">
+  <li><a href="{% url 'courses' %}"><i class="fa fa-graduation-cap"></i> Meus Cursos</a></li>
+  <li><a href="#"><i class="fa fa-certificate"></i> Meus Certificados</a></li>
+  <li><a href="#"><i class="fa fa-support"></i> Suporte</a></li>
+  <li><a href="#"><i class="fa fa-shopping-cart"></i> Comprar Cursos</a></li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-graduation-cap"></i> {{ user.username }} <span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="{% url 'home' %}"><i class="fa fa-check-square-o"></i> Painel do Aluno</a></li>
+      <li><a href="{% url 'new_course' %}"><i class="fa fa-square-o"></i> Painel do Professor</a></li>
+      <li><a href="#"><i class="fa fa-cog"></i> Configurações</a></li>
+      <li class="divider"></li>
+      <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Sair</a></li>
+    </ul>
+  </li>
+</ul>

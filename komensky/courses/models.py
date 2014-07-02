@@ -30,11 +30,11 @@ class Course(models.Model):
 
     title = models.CharField('Título', max_length=255)
     description = models.TextField('Descrição', max_length=1000)
-    subject = models.CharField(max_length=2, choices=SUBJECT)
+    subject = models.CharField('Categoria', max_length=2, choices=SUBJECT)
     user = models.ForeignKey(User)
     create_date = models.DateTimeField('Data de Criação', auto_now_add=True)
     update_date = models.DateTimeField('Data de Atualização', auto_now_add=True)
-    status = models.CharField(max_length=1, choices=STATUS, default=RASCUNHO)
+    status = models.CharField('Status', max_length=1, choices=STATUS, default=RASCUNHO)
     score = models.IntegerField('Pontuação', default=0)
 
     class Meta:
@@ -67,9 +67,11 @@ class Module(models.Model):
 
     course = models.ForeignKey(Course)
     parent = models.ForeignKey('self', null=True, blank=True)
-    title = models.CharField(max_length=255)
-    module_type = models.CharField(max_length=1, choices=MODULE_TYPE)
-    content = models.TextField(max_length=4000, null=True, blank=True)
+    title = models.CharField('Título', max_length=255)
+    module_type = models.CharField('Tipo', max_length=1, choices=MODULE_TYPE)
+    content = models.TextField('Conteúdo', max_length=4000, null=True, blank=True)
+    create_date = models.DateTimeField('Data de Criação', auto_now_add=True)
+    update_date = models.DateTimeField('Data de Atualização', auto_now_add=True)
 
     class Meta:
         verbose_name = 'Módulo'

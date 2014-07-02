@@ -29,3 +29,6 @@ def new_module(request, id):
     else:
         form = ModuleForm()
     return render(request, 'courses/new_module.html', {'course': course, 'form': form, })
+
+def edit_module(request, id_course, id_module):
+    pass

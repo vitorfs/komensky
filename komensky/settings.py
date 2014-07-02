@@ -1,7 +1,7 @@
 from unipath import Path
-PROJECT_DIR = Path(__file__).parent
-
 import dj_database_url
+
+PROJECT_DIR = Path(__file__).parent
 
 SECRET_KEY = '35j-(-!9e!e9g1jd=nv2y*4*9b0_93$+b5w@j7si(_&mi_0*ge'
 
@@ -35,10 +35,9 @@ ROOT_URLCONF = 'komensky.urls'
 WSGI_APPLICATION = 'komensky.wsgi.application'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': PROJECT_DIR.child('db.sqlite3'),
-    }
+    'default': dj_database_url.config(
+        default = 'postgres://u_komensky:123@localhost:5432/komensky'
+        )
 }
 
 LANGUAGE_CODE = 'pt-br'
